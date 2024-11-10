@@ -2,10 +2,9 @@ spring:
   application:
     name: task_app_api
 
-  rabbitmq:
-    addresses: localhost
-    username: guest
-    password: guest
+  profiles:
+    active:
+      - local
 
 server:
   port: 8081
