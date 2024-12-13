@@ -19,7 +19,6 @@ public class StepPressKeyFactory implements StepFactory {
         String keys = attributes.getOrDefault("keys", "");
         return StepPressKey.builder()
                 .keys(getKeyEvents(keys))
-                .delay(Integer.parseInt(attributes.getOrDefault("delay","0")))
                 .combine(Boolean.parseBoolean(attributes.getOrDefault("combine", "false")))
                 .build();
     }
