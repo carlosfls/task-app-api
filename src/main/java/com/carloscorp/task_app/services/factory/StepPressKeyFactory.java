@@ -20,7 +20,7 @@ public class StepPressKeyFactory implements StepFactory {
         return StepPressKey.builder()
                 .keys(getKeyEvents(keys))
                 .delay(Integer.parseInt(attributes.getOrDefault("delay","0")))
-                .combine(Boolean.parseBoolean(attributes.get("combine")))
+                .combine(Boolean.parseBoolean(attributes.getOrDefault("combine", "false")))
                 .build();
     }
 
