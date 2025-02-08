@@ -17,7 +17,7 @@ import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
-public class TaskServiceImpl implements TaskService {
+public class RabbitMqTaskServiceImpl implements TaskService {
 
     private final RabbitTemplate rabbitTemplate;
 
@@ -27,12 +27,17 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public void createTaskDto(CreateTaskDTO dto){
+    public void createAndSend(CreateTaskDTO dto){
         TaskDTO task = TaskDTO.builder()
                 .description(dto.getDescription())
                 .steps(getStepsFromTask(dto))
                 .build();
 
+       send(task);
+    }
+
+    @Override
+    public void send(TaskDTO task) {
         rabbitTemplate.convertAndSend("x.task","", task);
     }
 

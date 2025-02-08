@@ -19,7 +19,7 @@ public class TaskResource {
 
     @PostMapping
     public ResponseEntity<Void> createTask(@RequestBody CreateTaskDTO dto){
-        taskService.createTaskDto(dto);
+        taskService.createAndSend(dto);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
